@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>CUSTOMERSIGNUP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css copy/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">CUSTOMER SIGNUP</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+							<div class="text w-100">
+								<h2>Welcome to sign up</h2>
+								<p>GO BACK TO LOGIN</p>
+								<a href="/login" class="btn btn-white btn-outline-white">login</a>
+							</div>
+			      </div>
+						<div class="login-wrap p-4 p-lg-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Sign Up</h3>
+			      		</div>
+								<!-- <div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+									</p>
+								</div> -->
+			      	</div>
+							<form class="signin-form">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Username</label>
+			      			<input type="text" class="form-control" placeholder="Username" required  id="username" name="Name" >  
+			      		</div>
+                <div class="form-group mb-3">
+			      			<label class="label" for="name">Email</label>
+			      			<input type="email" class="form-control" placeholder="Email" required  id="useremail" name="email" >
+			      		</div>
+
+
+						  <div class="form-group mb-3">
+							<label class="label" for="name">PHONE NUMBER</label>
+							<input type="tel" class="form-control" placeholder="Phone NUMBER" required id="userphone" name="Phone">
+						</div>
+
+
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+		              <input type="password" class="form-control" placeholder="Password" required name="password" id="password">
+		            </div>
+                <div class="form-group mb-3">
+		            	<label class="label" for="password">Confirm Password</label>
+		              <input type="password" class="form-control" placeholder="re enter Password" required name="confirmpassword" id="confirmpassword" >
+		            </div>
+		            <div class="form-group">
+		            	<button type="button" class="form-control btn btn-primary submit px-3" onclick="RegisterationData()" >Sign UP</button>
+		            </div>
+                  <div class="form-group md-3">
+			            	<label class="checkbox-wrap checkbox-primary mb-0">I hereby declare that information provided is true and correct
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+										</label>
+									</div>
+		            </div>
+		          </form>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js copy/jquery.min.js"></script>
+  <script src="js copy/popper.js"></script>
+  <script src="js copy/bootstrap.min.js"></script>
+  <script src="js copy/main.js"></script>
+
+	</body>
+
+	<script>
+		function RegisterationData(){
+			var Name=document.getElementById('username').value;
+			var MobileNumber=document.getElementById('userphone').value;
+			var Email=document.getElementById('useremail').value;
+			var Password=document.getElementById('password').value;
+			var ConfirmPassword=document.getElementById('confirmpassword').value;
+			var data = {
+				Name: document.getElementById('username').value,
+				MobileNumber: document.getElementById('userphone').value,
+				Email: document.getElementById('useremail').value,
+				Password: document.getElementById('password').value,
+				ConfirmPassword: document.getElementById('confirmpassword').value,
+
+				}
+			fetch('/sendData', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+				})
+				
+				.then(response => response.json())
+				.then(data => {
+					console.log(data)
+					
+				})
+				.catch((error) => {
+					alert("Mail ID Already Exits")
+				});
+			
+		}
+
+		// if(password!=confirmpassword){
+		// 	alert('please check the password')
+		// }
+
+	// if(name=='' || number=='' || email==''){
+    //   alert('Please fill the filed')
+    //   return false;
+    // }
+    // else if(number.match(phno)){
+    //   alert("Mobile Number Should Contain 10 Digits")
+    //   return false;
+    // }
+
+	// if(password != confirmPassword){
+    //   alert('Please the check the password');
+	//   return false;
+    // }
+
+
+	
+		
+
+
+	
+
+
+
+	</script>
+
+
+
+
+
+
+
+</html>
+
